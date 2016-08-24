@@ -72,7 +72,7 @@ angular.module('starter.services', [])
     self.rollDice = function (number) {
         return _(number)
             .range()
-            .map(function (i) {
+            .map(function () {
                 return self.rollDie();
             })
             .value();
@@ -84,7 +84,7 @@ angular.module('starter.services', [])
         });
         roll.glitches = _.filter(roll.result, function (r) {
             return r == 1;
-        })
+        });
         roll.half = _.floor(roll.result.length / 2);
         roll.is_glitch = roll.glitches.length > roll.half;
         roll.is_critical_glitch = roll.is_glitch && roll.hits.length == 0;
@@ -95,7 +95,7 @@ angular.module('starter.services', [])
         } else if (roll.hits.length >= 6) {
             roll.difficulty = "a very hard";
         } else if (roll.hits.length >= 4) {
-            roll.difficulty = "a hrd";
+            roll.difficulty = "a hard";
         } else if (roll.hits.length >= 2) {
             roll.difficulty = "an average";
         } else if (roll.hits.length >= 1) {
