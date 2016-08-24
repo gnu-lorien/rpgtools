@@ -6,14 +6,14 @@
   </ion-nav-buttons>
   <ion-content class="padding">
     <ion-list>
-      <ion-item ng-repeat="roll in rolls | orderBy:$index:true">
+      <ion-item ng-repeat="roll in rolls | orderBy:$index:true track by $index">
         <div class="item item-divider">{{roll.description}}</div>
         <p><span ng-repeat="die in roll.result track by $index" ng-class="{'energized': die == 6 && roll.reroll, 'positive': die == 5 || (die == 6 && !roll.reroll), 'assertive': die == 1}">{{die}}<span ng-show="!$last">, </span></span></p>
         <p>{{roll.message}}</p>
         <p>{{roll.debug}}</p>
         <button class="button button-assertive button-small" ng-click="rerollFailures(roll)">Reroll Failures?</button>
-        <button class="button button-balanced button-small" ng-click="rerollFailures(roll)">Roll again?</button>
-        <button class="button button-positive button-small" ng-click="rerollFailures(roll)">New roll like this?</button>
+        <button class="button button-balanced button-small" ng-click="rollAgain(roll)">Another roll like this</button>
+        <button class="button button-positive button-small" ng-click="newTemplateFromRoll(roll)">New roll with this as template</button>
       </ion-item>
     </ion-list>
   </ion-content>

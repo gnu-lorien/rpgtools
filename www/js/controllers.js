@@ -5,6 +5,7 @@ angular.module('starter.controllers', [])
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, Rolls, $ionicModal) {
   $scope.rolls = Rolls.rolls;
+  $scope.roll = {};
 
   $scope.addNewRoll = function(roll) {
     Rolls.addNewRoll(roll);
@@ -15,8 +16,15 @@ function ($scope, $stateParams, Rolls, $ionicModal) {
     Rolls.rerollFailures(roll);
   };
 
+  $scope.newTemplateFromRoll = function(roll) {
+    var newRoll = _.defaults({}, roll);
+    _.assign($scope.roll, newRoll);
+    $scope.modal.show();
+  };
+
   $ionicModal.fromTemplateUrl("templates/new-roll.html", {
     scope: $scope,
+    roll: $scope.roll
   }).then(function(modal) {
     $scope.modal = modal;
   })
