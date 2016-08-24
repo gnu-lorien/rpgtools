@@ -16,6 +16,11 @@ function ($scope, $stateParams, Rolls, $ionicModal) {
     Rolls.rerollFailures(roll);
   };
 
+  $scope.rollAgain = function(roll) {
+    var newRoll = _.defaults({}, roll);
+    Rolls.addNewRoll(newRoll);
+  };
+
   $scope.newTemplateFromRoll = function(roll) {
     var newRoll = _.defaults({}, roll);
     _.assign($scope.roll, newRoll);
