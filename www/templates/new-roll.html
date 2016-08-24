@@ -1,0 +1,20 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">New Dice Roll</h1>
+    <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form id="newRoll-form1" class="list ">
+      <label class="item item-input " id="newRoll-input1" name="number_of_dice">
+        <span class="input-label">Number of Dice</span>
+        <input type="text" placeholder="4 + 5 - 6 + 2 - 2" ng-model="roll.number">
+      </label>
+      <ion-toggle toggle-class="toggle-positive" id="newRoll-toggle1" name="use_edge" ng-model="roll.reroll">Reroll sixes?</ion-toggle>
+      <label class="item item-input " id="newRoll-input2" name="label">
+        <span class="input-label">Label</span>
+        <input type="text" placeholder="Quickness + Athletics + Modifiers" ng-model="roll.description">
+      </label>
+    </form>
+    <button id="newRoll-button5" class=" button button-positive  button-block " ng-click="addNewRoll(roll)">Roll!</button>
+  </ion-content>
+</ion-modal-view>

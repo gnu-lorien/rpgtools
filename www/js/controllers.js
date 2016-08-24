@@ -1,0 +1,50 @@
+angular.module('starter.controllers', [])
+
+.controller('RollsCtrl', ['$scope', '$stateParams', 'Rolls', '$ionicModal',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, Rolls, $ionicModal) {
+  $scope.rolls = Rolls.rolls;
+
+  $scope.addNewRoll = function(roll) {
+    Rolls.addNewRoll(roll);
+    $scope.modal.hide();
+  };
+
+  $scope.rerollFailures = function(roll) {
+    Rolls.rerollFailures(roll);
+  };
+
+  $ionicModal.fromTemplateUrl("templates/new-roll.html", {
+    scope: $scope,
+  }).then(function(modal) {
+    $scope.modal = modal;
+  })
+}])
+
+.controller('DashCtrl', function($scope) {})
+
+.controller('ChatsCtrl', function($scope, Chats) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('AccountCtrl', function($scope) {
+  $scope.settings = {
+    enableFriends: true
+  };
+});
