@@ -6,7 +6,7 @@
   </ion-nav-buttons>
   <ion-content class="padding">
     <ion-list>
-      <ion-item ng-repeat="roll in rolls | orderBy:$index:true track by $index">
+      <ion-item class="item-text-wrap" ng-repeat="roll in rolls | orderBy:$index:true track by $index">
         <div class="item item-divider">{{roll.description}}</div>
         <p><span ng-repeat="die in roll.result track by $index" ng-class="{'energized': die == 6 && roll.reroll, 'positive': die == 5 || (die == 6 && !roll.reroll), 'assertive': die == 1}">{{die}}<span ng-show="!$last">, </span></span></p>
         <p>{{roll.message}}</p>
