@@ -46,7 +46,13 @@ function ($scope, $stateParams, Rolls, $ionicModal) {
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
+  $scope.results = {
+    chats: Chats.all()
+  };
+  $scope.fuse = new Fuse(Chats.all(), {
+    shouldSort: false,
+    keys: ["name", "lastText"]
+  });
   $scope.searchopts = {
     needle: ""
   };
@@ -56,7 +62,12 @@ function ($scope, $stateParams, Rolls, $ionicModal) {
   };
 
   $scope.$watch('searchopts.needle', function(nval, oval) {
-    console.log(nval);
+    if ("" == nval) {
+      $scope.results.chats = Chats.all();
+    } else if (nval != oval) {
+      console.log(nval);
+      $scope.results.chats = $scope.fuse.search(nval);
+    }
   });
 
   $scope.remove = function(chat) {
