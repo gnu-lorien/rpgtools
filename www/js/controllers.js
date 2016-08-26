@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('RollsCtrl', ['$scope', '$stateParams', 'Rolls', '$ionicModal', 'Status', 'Position', '$sce', '$templateRequest',
+.controller('RollsCtrl', ['$scope', '$stateParams', 'Rolls', '$ionicModal', 'Status', 'Position', '$sce', '$templateRequest', '$ionicScrollDelegate',
 // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -159,7 +159,7 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status, Position, $sce, $tem
   };
 })
 
-.controller('PositionCtrl', function($scope, $stateParams, Position, $sce, $templateRequest, Status, $state) {
+.controller('PositionCtrl', function($scope, $stateParams, Position, $sce, $templateRequest, Status, $state, $ionicScrollDelegate) {
   $scope.position = Position.get($stateParams.id);
   $scope.positionpage = "";
 
@@ -167,6 +167,7 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status, Position, $sce, $tem
 
   $templateRequest(templateUrl).then(function (template) {
     $scope.positionpage = template;
+    $ionicScrollDelegate.$getByHandle('thep').resize();
   }, function(error) {
     console.log(JSON.stringify(error));
   });
