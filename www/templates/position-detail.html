@@ -2,7 +2,7 @@
   <ion-content class="padding item-text-wrap">
     <h2>{{position.name}}</h2>
     <h3>{{position.type}}</h3>
-    <p>{{position.abiding_all}}</p>
+    <p><ul><li ng-repeat="st in position.abiding_all track by st.name"><a ng-href="{{urls[st.name]}}">{{st.name}}</a></li></ul></p>
     <div ng-bind-html="positionpage"></div>
   </ion-content>
 </ion-view>

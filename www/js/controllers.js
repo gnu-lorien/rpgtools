@@ -159,7 +159,7 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status, Position, $sce, $tem
   };
 })
 
-.controller('PositionCtrl', function($scope, $stateParams, Position, $sce, $templateRequest) {
+.controller('PositionCtrl', function($scope, $stateParams, Position, $sce, $templateRequest, Status, $state) {
   $scope.position = Position.get($stateParams.id);
   $scope.positionpage = "";
 
@@ -169,7 +169,26 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status, Position, $sce, $tem
     $scope.positionpage = template;
   }, function(error) {
     console.log(JSON.stringify(error));
-  })
+  });
+
+  $scope.urls = {};
+
+  _.each($scope.position.abiding_all, function(st) {
+    var id = Status.by_name()[st.name].id;
+    $scope.urls[st.name] = "#/tab/statustrait/" + id;
+  });
+
+  /*
+  $scope.goToStatus = function(name) {
+    var id = Status.by_name()[name].id;
+    $state.go('tab.statustrait', {id: id});
+  };
+
+  $scope.urlForStatus = function(name) {
+    var id = Status.by_name()[name].id;
+    return "#/tab/statustrait/" + id;
+  }
+  */
 })
 
 .controller('AccountCtrl', function($scope) {
