@@ -3,6 +3,7 @@
     <button class="button button-icon ion-plus" ng-click="modal.show()"></button>
   </ion-nav-buttons>
   <ion-content class="padding">
+
     <ion-list>
       <ion-item class="item-text-wrap" ng-repeat="roll in rolls | orderBy:$index:true track by $index">
         <div class="item item-divider">{{roll.description}}</div>

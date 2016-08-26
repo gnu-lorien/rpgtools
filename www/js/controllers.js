@@ -47,6 +47,18 @@ function ($scope, $stateParams, Rolls, $ionicModal) {
   //});
 
   $scope.chats = Chats.all();
+  $scope.searchopts = {
+    needle: ""
+  };
+
+  $scope.clearNeedle = function() {
+    $scope.searchopts.needle = "";
+  };
+
+  $scope.$watch('searchopts.needle', function(nval, oval) {
+    console.log(nval);
+  });
+
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
