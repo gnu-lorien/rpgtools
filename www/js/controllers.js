@@ -1,9 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('RollsCtrl', ['$scope', '$stateParams', 'Rolls', '$ionicModal', 'Status', 'Position',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('RollsCtrl', ['$scope', '$stateParams', 'Rolls', '$ionicModal', 'Status', 'Position', '$sce', '$templateRequest',
+// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, Rolls, $ionicModal, Status, Position) {
+function ($scope, $stateParams, Rolls, $ionicModal, Status, Position, $sce, $templateRequest) {
   $scope.rolls = Rolls.rolls;
   $scope.roll = {};
 
@@ -127,8 +128,7 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status, Position) {
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  //$scope.$on('$ionicView.enter', function(e) {Posiaoeuth
 
   $scope.results = {
     statustraits: Position.all()
@@ -157,6 +157,19 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status, Position) {
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+})
+
+.controller('PositionCtrl', function($scope, $stateParams, Position, $sce, $templateRequest) {
+  $scope.position = Position.get($stateParams.id);
+  $scope.positionpage = "";
+
+  var templateUrl = $sce.getTrustedResourceUrl("/positions/" + $scope.position.name + '.html');
+
+  $templateRequest(templateUrl).then(function (template) {
+    $scope.positionpage = template;
+  }, function(error) {
+    console.log(JSON.stringify(error));
+  })
 })
 
 .controller('AccountCtrl', function($scope) {

@@ -106,6 +106,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  .state('tab.position', {
+    url: '/position/:id',
+    views: {
+      'tab-positions': {
+        templateUrl: 'templates/position-detail.html',
+        controller: 'PositionCtrl'
+      }
+    }
+  })
 
   .state('tab.account', {
     url: '/account',

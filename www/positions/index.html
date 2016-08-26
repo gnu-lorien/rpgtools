@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+
+    <title>Hello World</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.0/lodash.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="cytoscape.js"></script>
+		<script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js"></script>
+		<script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.1.2/cytoscape-dagre.js"></script>
+    <script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-cose-bilkent/1.0.2/cytoscape-cose-bilkent.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/humanity/jquery-ui.css">
+    <style>
+      body { 
+        font: 14px helvetica neue, helvetica, arial, sans-serif;
+      }
+
+      #cy {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+
+    <!-- Inline scripts are forbidden in Firefox OS apps (CSP restrictions),
+         so we use a script file. -->
+    <script src="status.js" defer></script>
+    <script src="position.js" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+
+  <body>
+    <div id="cy"></div>
+    <div id="status_trait_dialog" title="Status Trait" style="display:none;">
+      <div id="status_trait_flavor"></div>
+      <h1 id="st_first_text">Passive</h1>
+      <div id="status_trait_passive"></div>
+      <h1 id="st_second_text">Spent</h1>
+      <div id="status_trait_spent"></div>
+    </div>
+    <div id="position_dialog" title="Position" style="display:none;">
+    </div>
+  </body>
+
+</html>
