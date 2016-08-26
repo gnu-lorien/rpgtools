@@ -117,6 +117,10 @@ function ($scope, $stateParams, Rolls, $ionicModal, Status) {
   };
 })
 
+.controller('StatusTraitCtrl', function($scope, $stateParams, Status) {
+  $scope.status = Status.get($stateParams.id);
+})
+
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true

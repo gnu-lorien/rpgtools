@@ -976,6 +976,11 @@ negative status automatically upgrades to Warned."
     },
     by_name: function() {
       return status_traits_by_name;
+    },
+    get: function(id) {
+      return _.find(status_traits, function(st) {
+        return st.id == id;
+      })
     }
   }
 });

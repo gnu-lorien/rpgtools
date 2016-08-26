@@ -87,6 +87,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  .state('tab.statustrait', {
+    url: '/statustrait/:id',
+    views: {
+      'tab-statustraits': {
+        templateUrl: 'templates/statustrait-detail.html',
+        controller: 'StatusTraitCtrl'
+      }
+    }
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {
