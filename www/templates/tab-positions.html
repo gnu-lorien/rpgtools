@@ -1,0 +1,21 @@
+<ion-view view-title="Positions">
+  <ion-content>
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="searchopts.needle"/>
+      </label>
+      <button class="button button-clean" ng-click="clearNeedle()">
+        Cancel
+      </button>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="position in results.positions" class="item-text-wrap" href="#/tab/positions/{{position.id}}">
+        <h2>{{position.name}}</h2>
+        <h3>{{position.type}}</h3>
+        <p>{{position.venue}}</p>
+        <p>{{position.abiding_all}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

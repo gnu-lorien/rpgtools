@@ -983,4 +983,181 @@ negative status automatically upgrades to Warned."
       })
     }
   }
+})
+
+.factory('Position', function () {
+  var positions = [
+    {
+      name: "Archbishop",
+      type: "Sabbat",
+      abiding: ["Authority", "Glorious", "Ordained"]
+    },
+    {
+      name: "Bishop",
+      type: "Sabbat",
+      abiding_choose_one: ["Blessed", "Enforcer"],
+      abiding_absent: ["Ordained"]
+    },
+    {
+      name: "Templar",
+      type: "Sabbat",
+      abiding: ["Enforcer"]
+    },
+    {
+      name: "Ductus",
+      type: "Sabbat",
+      abiding: ["Blessed"]
+    },
+    {
+      name: "Priest",
+      type: "Sabbat",
+      abiding: ["Ordained"]
+    },
+    {
+      name: "Abbot",
+      type: "Sabbat",
+    },
+    {
+      name: "Cardinal",
+      type: "Sabbat",
+      abiding: ["Authority", "Glorious", "Sacrosanct"]
+    },
+    {
+      name: "Regent",
+      type: "Sabbat",
+      abiding: ["Authority", "Commander", "Ominous", "Sacrosanct"]
+    },
+    {
+      name: "Priscus",
+      type: "Sabbat",
+      abiding: ["Infamous", "Prominent", "Sacrosanct"]
+    },
+    {
+      name: "Inner Circle",
+      type: "Camarilla",
+      abiding: ["Ascendant", "Authority", "Commander", "Ominous"]
+    },
+    {
+      name: "Imperator",
+      type: "Camarilla",
+      abiding: ["Ascendant", "Authority", "Commander"]
+    },
+    {
+      name: "Justicar",
+      type: "Camarilla",
+      abiding: ["Ascendant", "Authority", "Commander"]
+    },
+    {
+      name: "Archon",
+      type: "Camarilla",
+      abiding: ["Commander", "Noble"]
+    },
+    {
+      name: "Josian Archon",
+      type: "Camarilla",
+      abiding: ["Commander", "Noble"]
+    },
+    {
+      name: "Alastor",
+      type: "Camarilla",
+      abiding: ["Commander"]
+    },
+    {
+      name: "Prince",
+      type: "Camarilla",
+      abiding: ["Authority", "Commander", "Sovereign"]
+    },
+    {
+      name: "Petty Prince",
+      type: "Camarilla",
+      abiding: ["Authority", "Sovereign"]
+    },
+    {
+      name: "Seneschal",
+      type: "Camarilla",
+      abiding: ["Noble"],
+      abiding_absent: ["Authority"]
+    },
+    {
+      name: "Primogen",
+      type: "Camarilla",
+      abiding: ["Noble"]
+    },
+    {
+      name: "Whip",
+      type: "Camarilla",
+      abiding_absent: ["Noble"]
+    },
+    {
+      name: "Harpy",
+      type: "Camarilla",
+      abiding: ["Prominent", "Noble", "Guardian"]
+    },
+    {
+      name: "Lesser Harpy",
+      type: "Camarilla",
+      abiding_absent: ["Guardian"]
+    },
+    {
+      name: "Keeper of Elysium",
+      type: "Camarilla",
+      abiding: ["Enforcer", "Guardian"]
+    },
+    {
+      name: "Sheriff",
+      type: "Camarilla",
+      abiding: ["Enforcer", "Privileged"]
+    },
+    {
+      name: "Deputy Sheriff",
+      type: "Camarilla"
+    },
+    {
+      name: "Scourge",
+      type: "Camarilla",
+      abiding: ["Enforcer"]
+    },
+    {
+      name: "Elder",
+      type: "Camarilla",
+      abiding: ["Confirmed", "Established", "Privileged"]
+    },
+    {
+      name: "Ancilla",
+      type: "Camarilla",
+      abiding: ["Confirmed"]
+    },
+    {
+      name: "Neonate",
+      type: "Camarilla"
+    }
+
+  ];
+
+  _.each(positions, function (st) {
+    st.id = _.uniqueId(st.name);
+    st.abiding_all = _.extend([], st.abiding, st.abiding_absent, st.abiding_choose_one);
+  });
+
+  var positions_by_name = _
+    .chain(positions)
+    .map(function (st) {
+      return [st.name, st];
+    })
+    .fromPairs()
+    .value();
+
+  return {
+    all: function() {
+      return positions;
+    },
+    by_name: function() {
+      return positions_by_name;
+    },
+    get: function(id) {
+      return _.find(positions, function(st) {
+        return st.id == id;
+      })
+    }
+  }
 });
