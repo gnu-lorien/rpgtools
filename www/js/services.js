@@ -1136,7 +1136,17 @@ negative status automatically upgrades to Warned."
 
   _.each(positions, function (st) {
     st.id = _.uniqueId(st.name);
-    st.abiding_all = _.extend([], st.abiding, st.abiding_absent, st.abiding_choose_one);
+    //st.abiding_all = _.extend([], st.abiding, st.abiding_absent, st.abiding_choose_one);
+    st.abiding_all = [];
+    _.extend(st.abiding_all, _.map(st.abiding, function (st) {
+      return {name: st, type: "abiding"};
+    }));
+    _.extend(st.abiding_all, _.map(st.abiding_absent, function (st) {
+      return {name: st, type: "absent"};
+    }));
+    _.extend(st.abiding_all, _.map(st.abiding_choose_one, function (st) {
+      return {name: st, type: "choose"};
+    }));
   });
 
   var positions_by_name = _

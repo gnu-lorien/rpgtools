@@ -14,7 +14,7 @@
         <h2>{{position.name}}</h2>
         <h3>{{position.type}}</h3>
         <p>{{position.venue}}</p>
-        <p>{{position.abiding_all}}</p>
+        <p><span ng-repeat="status in position.abiding_all track by $index" ng-class="{'energized': status.type == 'absent', 'royal': status.type == 'choose'}">{{status.name}}<span ng-show="!$last">, </span></span></p>
       </ion-item>
     </ion-list>
   </ion-content>
