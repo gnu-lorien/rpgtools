@@ -953,8 +953,15 @@ for the night in which you are given the status.",
       spent: "If you receive a second Vulgar, this \
 negative status automatically upgrades to Warned."
     }
-
   ];
+
+  _.each(status_traits, function (st) {
+    st.id = _.uniqueId(st.name);
+    if (!_.has(st, "venue")) {
+      st.venue = "Generic";
+    }
+  });
+
   var status_traits_by_name = _
     .chain(status_traits)
     .map(function (st) {
