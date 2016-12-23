@@ -68,6 +68,9 @@ var make_node = function(n) {
 $(function(){ // on dom ready
 
   var sect = "Camarilla";
+  if (window.location.hash != "") {
+    sect = window.location.hash.substring(1);
+  }
   var elements = [];
   /* Positions */
   if ("Sabbat" == sect) {
