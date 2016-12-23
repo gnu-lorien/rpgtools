@@ -138,7 +138,7 @@ $(function(){ // on dom ready
       make_edge("Prince", "Scourge"));
 
   }
-  
+
   /* Storyteller */
   var storyteller = {
     data: {
@@ -169,7 +169,7 @@ $(function(){ // on dom ready
     })
     .value();
   elements = _.concat(elements, storyteller, all_fleeting);
-  
+
   /* Rituals */
   if ("Sabbat" == sect) {
     var auct_names = [
@@ -208,7 +208,7 @@ $(function(){ // on dom ready
     ];
     elements = _.concat(elements, rituals);
   }
-  
+
   /* Status */
   var other_status = [
     make_edge_spent("Warned", "Disgraced"),
@@ -320,15 +320,15 @@ $(function(){ // on dom ready
     })
     .value();
   elements = _.concat(elements, status_nodes);
-  
+
 var cy = cytoscape({
   container: document.getElementById('cy'),
-  
+
   boxSelectionEnabled: false,
   //autounselectify: true,
   autoungrabify: true,
   selectionType: 'single',
-  
+
   style: [
     {
       selector: 'node',
@@ -421,10 +421,10 @@ var cy = cytoscape({
       }
     }
   ],
-  
+
   elements: elements,
 
-  
+
   /*
   layout: {
     name: 'concentric',
@@ -487,9 +487,9 @@ var cy = cytoscape({
           }
         });
       })
-    };    
+    };
   };
-  
+
   var elements_removed;
   var currently_selected_node_id;
   var highlight_node = function(node) {
@@ -512,7 +512,7 @@ var cy = cytoscape({
       elements_removed.remove();
     }
   };
-  
+
   cy.on('tap', 'node', _.debounce(function(evt) {
     var node = evt.cyTarget;
     console.log( 'tapped ' + node.id() );
@@ -521,8 +521,14 @@ var cy = cytoscape({
     console.log(lbl);
     //show_text(lbl);
   }, 1000));
-  
+
   cy.on('taphold', 'node', function(evt) {
+    var lbl = this.data('label');
+    console.log("taphold " + lbl);
+    show_text(lbl);
+  });
+
+  cy.on('cxttap', 'node', function(evt) {
     var lbl = this.data('label');
     console.log("cxttap " + lbl);
     show_text(lbl);
