@@ -217,6 +217,7 @@ $(function(){ // on dom ready
     make_edge_spent("Warned", "Disgraced"),
     make_edge_spent("Disgraced", "Forsaken"),
     make_edge_passive("Disgraced", "Praised"),
+    make_edge_passive("Forsaken", "Triumphant"),
     make_edge_passive("Authority", "Courageous"),
     make_edge_passive("Authority", "Defender"),
     make_edge_passive("Authority", "Honorable"),
