@@ -216,6 +216,7 @@ $(function(){ // on dom ready
   var other_status = [
     make_edge_spent("Warned", "Disgraced"),
     make_edge_spent("Disgraced", "Forsaken"),
+    make_edge_passive("Disgraced", "Praised"),
     make_edge_passive("Authority", "Courageous"),
     make_edge_passive("Authority", "Defender"),
     make_edge_passive("Authority", "Honorable"),
@@ -268,7 +269,8 @@ $(function(){ // on dom ready
         make_edge_spent("Sacrosanct", "Blood Feast"),
         make_edge_spent("Sacrosanct", "Wild Hunt"),
         make_edge_spent("Anointed", "Ignoblis Ritae"),
-        make_edge_spent("Anointed", "Auctoritas Ritae"));
+        make_edge_spent("Anointed", "Auctoritas Ritae"),
+        make_edge_passive("Cowardly", "Praised"));
   } else {
     other_status = _.concat(
         other_status,
